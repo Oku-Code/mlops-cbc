@@ -1,4 +1,7 @@
 import json
+from pathlib import Path
+
+FILE = Path("data.json")
 
 data = {
     'name': 'JD Rodas Barco',
@@ -8,8 +11,10 @@ data = {
 }
 
 try:
-    with open("data.json", 'a') as file:
-        json.dump(data, file)
+    with FILE.open('r') as file:
+        contents = file.readlines()
+        for line in contents:
+            print(line)
 except FileNotFoundError:
     print("File not in path...")
 
